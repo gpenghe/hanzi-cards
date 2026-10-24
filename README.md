@@ -18,11 +18,12 @@ original flashcard/reveal and learning-progress design.
   saved progress, score, session counter, or automatic timed flashing.
 
 The default set is **Up to 二年级**, to start with familiar material.
-The three bundled choices are:
+The four bundled choices are:
 
 | Set | Characters | Coverage |
 | --- | ---: | --- |
 | Up to 二年级 | 275 | 暨南《中文》第一至二册 |
+| Up to 第三册第三课 | 315 | 第一至二册 + 第三册第1–3课 |
 | Up to 三年级 | 429 | 暨南《中文》第一至三册 |
 | Basic 500 | 500 | Independent everyday starter collection |
 
@@ -120,7 +121,7 @@ and [Vite PWA update prompt guidance](https://vite-pwa-org.netlify.app/guide/pro
 4. Launch Hanzi from its Home Screen icon. Confirm Safari's navigation bars
    are absent and the character is large and fully visible.
 5. Close the app, enable airplane mode (and disable Wi-Fi), and reopen the
-   Home Screen app. Tap, swipe, and switch among all three sets.
+   Home Screen app. Tap, swipe, and switch among all four sets.
 6. Confirm portrait and landscape fit without scrolling, including safe areas.
 7. Turn connectivity back on. Updates download in the background; when ready,
    an **Update** button appears in Settings. Applying it reloads into a fresh
@@ -135,7 +136,7 @@ Safari website data can remove the offline cache. Reopen online to recache.
 - [ ] Physical iPhone: launches directly to one character, with no answer or progress.
 - [ ] Tap advances once; left swipe advances once; right swipe returns correctly.
 - [ ] Controls do not interfere with Safari's edge navigation gestures.
-- [ ] All three sets appear; textbook characters match the learner's edition.
+- [ ] All four sets appear; textbook characters match the learner's edition.
 - [ ] Character fits smaller/larger iPhones and landscape; no clipped glyphs or scroll.
 - [ ] Light, dark, and system appearance work, including a system theme change.
 - [ ] Home Screen launch is standalone and respects notches/home indicator.

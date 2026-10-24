@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { characterSets } from '../src/data/sets';
-import { jinanBook1, jinanBook2, jinanBook3 } from '../src/data/jinan';
+import { jinanBook1, jinanBook2, jinanBook3, jinanBook3FirstLessons } from '../src/data/jinan';
 import { createGame, defaults, gameReducer, makeOrder, readPreferences, savePreferences, STORAGE_KEY, swipeDirection } from '../src/game';
 
 describe('character collections', () => {
@@ -16,12 +16,23 @@ describe('character collections', () => {
     });
   }
   it('builds cumulative textbook sets from the verified volume lists', () => {
+    const through2 = characterSets.find(set => set.id === 'jinan-through-2')!;
+    const through3 = characterSets.find(set => set.id === 'jinan-through-3')!;
     expect([jinanBook1.length, jinanBook2.length, jinanBook3.length]).toEqual([133, 143, 158]);
-    expect(characterSets[0].characters).toEqual([...new Set([...jinanBook1, ...jinanBook2])]);
-    expect(characterSets[1].characters).toEqual([...new Set([...jinanBook1, ...jinanBook2, ...jinanBook3])]);
-    expect(characterSets[0].characters).toHaveLength(275);
-    expect(characterSets[1].characters).toHaveLength(429);
-    expect(characterSets[0].characters.every(c => characterSets[1].characters.includes(c))).toBe(true);
+    expect(through2.characters).toEqual([...new Set([...jinanBook1, ...jinanBook2])]);
+    expect(through3.characters).toEqual([...new Set([...jinanBook1, ...jinanBook2, ...jinanBook3])]);
+    expect(through2.characters).toHaveLength(275);
+    expect(through3.characters).toHaveLength(429);
+    expect(through2.characters.every(c => through3.characters.includes(c))).toBe(true);
+  });
+  it('stops the lesson-specific set exactly at book 3 lesson 3', () => {
+    const set = characterSets.find(set => set.id === 'jinan-through-3-lesson-3')!;
+    expect(jinanBook3FirstLessons.map(lesson => lesson.length)).toEqual([12, 14, 14]);
+    expect(set.characters).toHaveLength(315);
+    expect(set.characters).toEqual([...new Set([...jinanBook1, ...jinanBook2, ...jinanBook3FirstLessons.flat()])]);
+    for (const character of '医院感冒带病护士') expect(set.characters).toContain(character);
+    for (const character of '鼻猜骗谎') expect(set.characters).not.toContain(character);
+    expect(set.characters.every(c => characterSets.find(s => s.id === 'jinan-through-3')!.characters.includes(c))).toBe(true);
   });
   it('introduces the requested lesson 3 medical characters only in book 3', () => {
     const through2 = characterSets.find(set => set.id === 'jinan-through-2')!;

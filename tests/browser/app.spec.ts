@@ -70,6 +70,7 @@ test('sets and appearance work; modal prevents background keyboard navigation', 
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await expect(page.getByRole('radio', { name: /Up to 二年级/ })).toBeVisible();
+  await expect(page.getByRole('radio', { name: /Up to 第三册第三课/ })).toBeVisible();
   await expect(page.getByRole('radio', { name: /Up to 三年级/ })).toBeVisible();
 });
 
@@ -114,6 +115,7 @@ test('manifest and offline reload work under the repository subpath', async ({ p
   await expect(page.locator('.hanzi')).toHaveText(/^\p{Script=Han}$/u);
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.getByRole('radio', { name: /Basic 500/ }).check();
+  await page.getByRole('radio', { name: /Up to 第三册第三课/ }).check();
   await page.getByRole('radio', { name: /Up to 三年级/ }).check();
   await page.getByRole('button', { name: 'Let’s play' }).click();
   const first = await page.locator('.hanzi').textContent();

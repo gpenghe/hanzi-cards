@@ -1,5 +1,5 @@
 import { basic500 } from './basic500';
-import { jinanBook1, jinanBook2, jinanBook3 } from './jinan';
+import { jinanBook1, jinanBook2, jinanBook3, jinanBook3FirstLessons } from './jinan';
 
 export interface CharacterSet {
   id: string;
@@ -17,6 +17,12 @@ export const characterSets: readonly CharacterSet[] = [
     name: 'Up to 二年级',
     description: '暨南《中文》 · 第一至二册',
     characters: cumulative(jinanBook1, jinanBook2),
+  },
+  {
+    id: 'jinan-through-3-lesson-3',
+    name: 'Up to 第三册第三课',
+    description: '第一至二册 + 第三册第1–3课',
+    characters: cumulative(jinanBook1, jinanBook2, ...jinanBook3FirstLessons),
   },
   {
     id: 'jinan-through-3',

@@ -13,6 +13,7 @@ copied to create it.
 The family confirmed that 三年级 means **第三册**, not 第五、六册.
 
 - **Up to 二年级**: the union of 第一册 and 第二册 — **275 characters**.
+- **Up to 第三册第三课**: 第一册, 第二册, and only 第三册 lessons 1–3 — **315 characters**.
 - **Up to 三年级**: the union of 第一册, 第二册, and 第三册 — **429 characters**.
 
 Source checked on 2026-10-24:
@@ -31,6 +32,11 @@ Lesson cross-check: the same publisher lookup with `bookCount=3` and
 characters 医、院、感、冒、带、病、护、士 are all in that lesson and in
 第三册, and none occur in either 第一册 or 第二册. A regression test
 checks their membership in both cumulative sets.
+
+The lesson-specific set was checked with `bookCount=3` and `bookLesson=1`,
+`2`, and `3` separately. The lists contain 12, 14, and 14 unique characters,
+respectively, adding 40 characters to the 275 from the first two books.
+It does not include characters introduced later in 第三册.
 
 A character can occur more than once (for example, 种 and 长 in 第二册).
 The game deduplicates within each volume and again across cumulative sets;
