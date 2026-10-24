@@ -26,6 +26,12 @@ Its public book selector reads `/Coo/BindKeywordList` with `Page`, `Size`, and
 | 第二册 | 146 | 143 |
 | 第三册 | 159 | 158 |
 
+Lesson cross-check: the same publisher lookup with `bookCount=3` and
+`bookLesson=3` returns `医院病针烧感冒护士带量温药就`. The requested
+characters 医、院、感、冒、带、病、护、士 are all in that lesson and in
+第三册, and none occur in either 第一册 or 第二册. A regression test
+checks their membership in both cumulative sets.
+
 A character can occur more than once (for example, 种 and 长 in 第二册).
 The game deduplicates within each volume and again across cumulative sets;
 repeated vocabulary does not make a character appear more often. Sequential

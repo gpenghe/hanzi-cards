@@ -23,6 +23,17 @@ describe('character collections', () => {
     expect(characterSets[1].characters).toHaveLength(429);
     expect(characterSets[0].characters.every(c => characterSets[1].characters.includes(c))).toBe(true);
   });
+  it('introduces the requested lesson 3 medical characters only in book 3', () => {
+    const through2 = characterSets.find(set => set.id === 'jinan-through-2')!;
+    const through3 = characterSets.find(set => set.id === 'jinan-through-3')!;
+    for (const character of '医院感冒带病护士') {
+      expect(jinanBook1).not.toContain(character);
+      expect(jinanBook2).not.toContain(character);
+      expect(jinanBook3).toContain(character);
+      expect(through2.characters).not.toContain(character);
+      expect(through3.characters).toContain(character);
+    }
+  });
 });
 
 describe('game navigation', () => {
